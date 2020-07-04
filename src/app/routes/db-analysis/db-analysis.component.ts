@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
+import { CSVReader } from "./../entry-and-visualization/genomic-data-providers/csv-reader.service"
 
 @Component({
   selector: "db-analysis",
@@ -54,6 +55,10 @@ import {Component} from "@angular/core";
     }
   `]
 })
-export class DBAnalysisComponent {
+export class DBAnalysisComponent implements OnInit{
+  constructor(private csvReader: CSVReader) {}
 
+  ngOnInit() {
+    this.csvReader.readCSV();
+  }
 }

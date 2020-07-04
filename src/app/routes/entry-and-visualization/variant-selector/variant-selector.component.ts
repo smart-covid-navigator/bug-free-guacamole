@@ -4,9 +4,9 @@
  * insanely easy and you can build custom input selectors, this shouldn"t require too much code.
  */
 import { Component, forwardRef } from "@angular/core";
-import {GeneReference, Variant, VariantReference} from "../genomic-data";
+import { GeneReference, Variant, VariantReference} from "../genomic-data";
 import { VariantSelectorService } from "./variant-selector.service";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 export const SELECTOR_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -34,9 +34,9 @@ export class VariantSelectorComponent implements ControlValueAccessor {
 
   currentReference: VariantReference;
 
-  // The internal data model (for ngModel)
-  _currentlySelected: Variant;
-  get currentlySelected(): Variant {
+
+  _currentlySelected: Variant; // turn into risk factor
+  get currentlySelected(): Variant { // should be a getter function for a risk factor
     return this._currentlySelected;
   }
   set currentlySelected(v: Variant) {
@@ -46,7 +46,7 @@ export class VariantSelectorComponent implements ControlValueAccessor {
     }
   }
 
-  // From ControlValueAccessor interface
+  // needed for ControlValueAccessor interface
   writeValue(value: Variant) {
     if (value !== this.currentlySelected) {
       this.currentlySelected = value;
@@ -57,7 +57,7 @@ export class VariantSelectorComponent implements ControlValueAccessor {
     }
   }
 
-  // Placeholders for the callbacks which are later providesd by the Control Value Accessor
+  // callback placeholders provided by Control Value Accessor
   private onTouchedCallback: () => void = () => {};
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
@@ -78,4 +78,5 @@ export class VariantSelectorComponent implements ControlValueAccessor {
     this.selectorService.getByReference(reference)
       .subscribe(resultingVariant => this.currentlySelected = resultingVariant);
   }
+
 }

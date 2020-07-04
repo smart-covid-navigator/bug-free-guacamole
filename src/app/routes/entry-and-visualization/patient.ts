@@ -3,7 +3,8 @@ Storage for patient information
 Contains two classes:
     Patient class: stores information like name, age, where they live
     Condition class: each one is a separate condition that the patient has. The patient will have a list
-        of conditions within its own object.
+        of conditions within its own object. A condition consists of a code, the actual written diagnosis,
+        and the source of the information (either VA or CMS). The display is for ease of writing in the HTML.
 */
 
 // The Patient class described at the top of the file

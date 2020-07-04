@@ -42,6 +42,7 @@ import { VariantSelectorService } from "./routes/entry-and-visualization/variant
 import { DrugsSearchService } from "./routes/entry-and-visualization/variant-visualization/drugs/drugs-search.service";
 import { MyGeneInfoSearchService } from "./routes/entry-and-visualization/genomic-data-providers/mygeneinfo-search.service";
 import { JSONNavigatorService } from "./routes/entry-and-visualization/genomic-data-providers/utilities/json-navigator.service";
+import { CSVReader } from "./routes/entry-and-visualization/genomic-data-providers/csv-reader.service"
 
 @NgModule({
   imports:      [
@@ -94,7 +95,8 @@ import { JSONNavigatorService } from "./routes/entry-and-visualization/genomic-d
     AssocsService,
     ClinicalTrialsService,
     DrugsSearchService,
-    JSONNavigatorService
+    JSONNavigatorService,
+    CSVReader
   ],
   bootstrap: [
     AppComponent

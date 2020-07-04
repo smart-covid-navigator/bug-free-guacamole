@@ -33,7 +33,7 @@ export interface IGeneDatabase {
 export class VariantSelectorService implements IFilterableSearchService {
   constructor(private myvariantinfoSearchService: MyVariantInfoSearchService, private mygeneinfoSearchService: MyGeneInfoSearchService) {}
 
-  // The databases initialized in the constructor.
+
   variantDatabases: IVariantDatabase[] = [this.myvariantinfoSearchService];
   geneDatabases: IGeneDatabase[] = [this.mygeneinfoSearchService];
 

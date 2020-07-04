@@ -47,11 +47,11 @@ export interface IFilterableSearchService {
   template: `
     <div #PopupToggle class="filterToggle" (click)="toggleMenu(true)" [style.border-bottom]="menuCurrentlyOpen ? '0' : '1px solid #dadada'">
       <img src="/assets/entry-and-visualization/dropdown.svg"/>
-      
+
       <!-- Display selected option before click -->
       <p *ngIf="currentlySelected !== undefined && currentlySelected !== null" [hidden]="menuCurrentlyOpen" style="font-style: normal; font-weight: bold;">{{currentlySelected.optionName()}}</p>
       <p *ngIf="currentlySelected === undefined || currentlySelected === null" [hidden]="menuCurrentlyOpen" style="font-style: italic; font-weight: normal;">{{placeholderString}}</p>
-      
+
       <!-- Switch from p to input on click -->
       <input autocomplete="off" #SearchBox [hidden]="!menuCurrentlyOpen" (keyup)="search(SearchBox.value)" placeholder="Search" class="filterInput form-control"/>
     </div>
@@ -266,4 +266,3 @@ export class FilterableSearchComponent implements OnInit, AfterViewInit, Control
     this.currentlySelected = null;
   }
 }
-

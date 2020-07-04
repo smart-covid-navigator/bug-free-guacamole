@@ -3,14 +3,15 @@ import { Variant } from "./genomic-data";
 import { SMARTClient } from "../../smart-initialization/smart-reference.service";
 import { VariantSelectorService } from "./variant-selector/variant-selector.service";
 import { trigger, state, style, animate, transition } from "@angular/animations";
-import {Router} from "@angular/router";
-import {FeedbackFormModalComponent} from "../feedback-form/feedback-form-modal.component";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {isNullOrUndefined} from "util";
+import { Router } from "@angular/router";
+import { FeedbackFormModalComponent } from "../feedback-form/feedback-form-modal.component";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { isNullOrUndefined } from "util";
 import { Patient, Condition } from "./patient";
 import { CMSService } from "../login-services/cms.service";
 import { VAService } from "../login-services/va.service";
 import { ActivatedRoute } from "@angular/router";
+
 
 class VariantWrapper {
   constructor(_index: number, _variant: Variant) {
@@ -297,6 +298,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
     this.addRow();
     this.offerToLinkToEHRInstructions = true;
     this.patientExists = false;
+    
     
     // everything inside this activatedRoute statement is going towards getting VA/CMS API data
     this.activatedRoute.queryParams.subscribe(params => {

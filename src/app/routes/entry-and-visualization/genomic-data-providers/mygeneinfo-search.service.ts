@@ -35,42 +35,41 @@ export class MyGeneInfoSearchService implements IGeneDatabase {
       return Observable.of(variant);
     }
 
-    // Query for gene stuff.
-    return this.http.get("https://mygene.info/v3/gene/" + variant.origin.entrezID)
-      .map(response => {
-        console.log("Got for gene annotation ", response);
+    // Query for gene information
+    return this.http.get("https://mygene.info/v3/gene/" + variant.origin.entrezID).map(response => {
+      console.log("Got for gene annotation ", response);
 
-        if (response["name"]) {
-          variant.origin.name = response["name"];
+      if (response["name"]) {
+        variant.origin.name = response["name"];
+      }
+      if (response["alias"]) {
+        if (response["alias"] instanceof Array) {
+          variant.origin.aliases = response["alias"];
+        } else {
+          variant.origin.aliases = [response["alias"]];
         }
-        if (response["alias"]) {
-          if (response["alias"] instanceof Array) {
-            variant.origin.aliases = response["alias"];
-          } else {
-            variant.origin.aliases = [response["alias"]];
-          }
-        }
-        if (response["summary"]) {
-          variant.origin.description = response["summary"];
-        }
-        if (response["type_of_gene"]) {
-          variant.origin.type = response["type_of_gene"];
-        }
+      }
+      if (response["summary"]) {
+        variant.origin.description = response["summary"];
+      }
+      if (response["type_of_gene"]) {
+        variant.origin.type = response["type_of_gene"];
+      }
 
-        if (response["genomic_pos"]) {
-          variant.origin.chromosome = response["genomic_pos"].chr;
-          variant.origin.start = response["genomic_pos"].start;
-          variant.origin.end = response["genomic_pos"].end;
-          variant.origin.strand = response["genomic_pos"].strand;
-        }
+      if (response["genomic_pos"]) {
+        variant.origin.chromosome = response["genomic_pos"].chr;
+        variant.origin.start = response["genomic_pos"].start;
+        variant.origin.end = response["genomic_pos"].end;
+        variant.origin.strand = response["genomic_pos"].strand;
+      }
 
-        if (response["pathway"] && response["pathway"].wikipathways) {
-          for (const wikipathway of response["pathway"].wikipathways) {
-            variant.origin.pathways.push(new Pathway(wikipathway.id, wikipathway.name));
-          }
+      if (response["pathway"] && response["pathway"].wikipathways) {
+        for (const wikipathway of response["pathway"].wikipathways) {
+          variant.origin.pathways.push(new Pathway(wikipathway.id, wikipathway.name));
         }
+      }
 
-        return variant;
-      });
-  }
+      return variant;
+    });
+  }  
 }
