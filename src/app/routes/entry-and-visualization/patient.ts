@@ -14,7 +14,7 @@ export class Patient {
     zipCode: string;
     gender: string;
     age: number;
-    conditions: Condition[] = [];
+    conditions: PatientCondition[] = [];
     alreadyContainedCodes: string[] = [];
 
     constructor(
@@ -23,7 +23,7 @@ export class Patient {
         zipCode: string,
         gender: string,
         age: number,
-        conditions: Condition[],
+        conditions: PatientCondition[],
         alreadyContainedCodes: string[]
     ) {
         this.firstName = firstName;
@@ -38,7 +38,7 @@ export class Patient {
 }
 
 // Condition class as described at the top of the file
-export class Condition {
+export class PatientCondition {
     code: string;
     name: string;
     source: string;

@@ -55,9 +55,9 @@ export interface IFilterableSearchService {
       <!-- Switch from p to input on click -->
       <input autocomplete="off" #SearchBox [hidden]="!menuCurrentlyOpen" (keyup)="search(SearchBox.value)" placeholder="Search" class="filterInput form-control"/>
     </div>
-
+    
     <!-- Suggestions for potential selections -->
-    <div #PopupPanel class="filterPanel" [hidden]="!menuCurrentlyOpen" [style.width.px]="desiredPopupWidth" [style.height.px]="(options | async)?.length < 6 ? (options | async)?.length * 48 : 288">
+    <div #PopupPanel class="lterPanel" [hidden]="!menuCurrentlyOpen" [style.width.px]="desiredPopupWidth" [style.height.px]="(options | async)?.length < 6 ? (options | async)?.length * 48 : 288">
       <table class="table table-hover">
         <tr *ngFor="let option of options | async">
           <td (click)="onSelection(option)">{{option.optionName()}}</td>

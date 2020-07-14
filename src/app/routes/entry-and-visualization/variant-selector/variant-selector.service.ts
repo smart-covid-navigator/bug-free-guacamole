@@ -15,6 +15,7 @@ import { MyGeneInfoSearchService } from "../genomic-data-providers/mygeneinfo-se
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import "rxjs/add/observable/forkJoin";
+import { CSVReader } from "../genomic-data-providers/csv-reader.service";
 
 /**
  * Very simple and straightforward requirements, the database receives the search term and then just hands back the
@@ -31,7 +32,8 @@ export interface IGeneDatabase {
 
 @Injectable()
 export class VariantSelectorService implements IFilterableSearchService {
-  constructor(private myvariantinfoSearchService: MyVariantInfoSearchService, private mygeneinfoSearchService: MyGeneInfoSearchService) {}
+  constructor(private myvariantinfoSearchService: MyVariantInfoSearchService, private mygeneinfoSearchService: MyGeneInfoSearchService,
+    private csvReader: CSVReader) {}
 
 
   variantDatabases: IVariantDatabase[] = [this.myvariantinfoSearchService];

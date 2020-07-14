@@ -34,6 +34,7 @@ export class VariantSelectorComponent implements ControlValueAccessor {
 
   currentReference: VariantReference;
 
+  
 
   _currentlySelected: Variant; // turn into risk factor
   get currentlySelected(): Variant { // should be a getter function for a risk factor

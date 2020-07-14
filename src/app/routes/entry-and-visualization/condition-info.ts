@@ -3,6 +3,21 @@ Various classes to store information about conditions.
 Each is described in more detail below.
 */
 
+
+export class Condition {
+    name: string;
+    codes: string[];
+    color: number;
+    constructor(
+        name: string,
+        codes: string[]
+    ) {
+        this.name = name;
+        this.codes = codes;
+        this.color = 0;
+    }
+}
+
 // stores information about a clinical trial for a condition being examined.
 export class ClinicalTrial {
     name: string;

@@ -17,6 +17,9 @@ export const VISUALIZATION_CONTROL_VALUE_ACCESSOR: any = {
   template: `
     <!-- Tabs to view the variant's info.  -->
     <ngb-tabset [destroyOnHide]="false" *ngIf="currentlySelected !== undefined && currentlySelected !== null">
+      
+      <!--
+      commenting out gene, variant, and association, not relevant right now
       <ngb-tab title="Gene">
         <ng-template ngbTabContent>
           <gene-information [gene]="currentlySelected.origin"></gene-information>
@@ -28,18 +31,22 @@ export const VISUALIZATION_CONTROL_VALUE_ACCESSOR: any = {
           <variant-information [variant]="currentlySelected"></variant-information>
         </ng-template>
       </ngb-tab>
+      -->
+      
+      <ngb-tab title="Clinical Trials">
+          <ng-template ngbTabContent>
+              <clinical-trials [(ngModel)]="currentlySelected"></clinical-trials>
+          </ng-template>
+      </ngb-tab>
 
-        <ngb-tab title="Clinical Trials">
-            <ng-template ngbTabContent>
-                <clinical-trials [(ngModel)]="currentlySelected"></clinical-trials>
-            </ng-template>
-        </ngb-tab>
 
-        <ngb-tab title="Associations">
-            <ng-template ngbTabContent>
-                <assocs [(ngModel)]="currentlySelected"></assocs>
-            </ng-template>
-        </ngb-tab>
+      <!--
+      <ngb-tab title="Associations">
+          <ng-template ngbTabContent>
+              <assocs [(ngModel)]="currentlySelected"></assocs>
+          </ng-template>
+      </ngb-tab>
+      -->
     </ngb-tabset>
   `,
   styles: [`    

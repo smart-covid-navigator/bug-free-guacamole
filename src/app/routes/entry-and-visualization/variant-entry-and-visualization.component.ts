@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 import { FeedbackFormModalComponent } from "../feedback-form/feedback-form-modal.component";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { isNullOrUndefined } from "util";
-import { Patient, Condition } from "./patient";
+import { Patient, PatientCondition } from "./patient";
 import { CMSService } from "../login-services/cms.service";
 import { VAService } from "../login-services/va.service";
 import { ActivatedRoute } from "@angular/router";
@@ -66,7 +66,7 @@ class VariantWrapper {
         </div>
       </div>
     </div>
-
+    <!--
     <div id="variantVisualizations">
       <div class="variantWrapper" *ngFor="let variant of variants; let i = index">
         <div class="variantSelector">
@@ -88,7 +88,11 @@ class VariantWrapper {
         </div>
       </div>
     </div>
-
+    -->
+    <div id="variantVisualizations">
+      <condition-visualization></condition-visualization>
+    </div>
+    
     <!-- Review form question -->
     <div id="askForReviewDiv" *ngIf="userInteractionPoints >= 3 && askForReview">
       <a href="javascript:void(0)" (click)="openFeedbackForm()">
@@ -444,7 +448,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
   }
 
   // create a patient using information gotten from files, and put that into the class patient object
-  createPatient(first: string, last: string, zip: string, gender: string, age: number, conditionsArray: Condition[], codesInArray: string[]) {
+  createPatient(first: string, last: string, zip: string, gender: string, age: number, conditionsArray: PatientCondition[], codesInArray: string[]) {
     var patient = new Patient(first, last, zip, gender, age, conditionsArray, codesInArray);
     this.patient = patient;
   }
@@ -485,7 +489,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
       this.cmsService.eobInfo(patientId).subscribe(eob => {
         var entry = JSON.parse(eob).entry;
         var entryString = JSON.stringify(entry);
-        var conditionsArray: Condition[] = [];
+        var conditionsArray: PatientCondition[] = [];
         var codesInArray: string[] = [];
         for (var i = 0; i < entry.length; i++) { // looping through all entries to find 
           var entryHere = JSON.stringify(JSON.parse(entryString)[i]);
@@ -503,7 +507,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
             var display = JSON.parse(indexHere).display;
             if (code != "9999999") {
               if (!codesInArray.includes(code)) {
-                var condition = new Condition(code, display, "CMS");
+                var condition = new PatientCondition(code, display, "CMS");
                 conditionsArray.push(condition);
                 codesInArray.push(code);
               }
@@ -540,7 +544,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
         this.patientExists = true;
         var stringified = JSON.stringify(patient);
         var entry = JSON.parse(stringified).entry;
-        var conditionsArray: Condition[] = [];
+        var conditionsArray: PatientCondition[] = [];
         var codesInArray: string[] = [];
         for (var i = 0; i < entry.length; i++) {
           var thisIndex = JSON.stringify(entry[i]);
@@ -551,7 +555,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
           var code = JSON.parse(coding).code;
           var display = JSON.parse(coding).display;
           if (!codesInArray.includes(code) && clinicalStatus == "active") { // not already listed, and still an ongoing issue
-            var condition = new Condition(code, display, "VA");
+            var condition = new PatientCondition(code, display, "VA");
             conditionsArray.push(condition);
             codesInArray.push(code);
           } 
@@ -590,7 +594,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
         this.patientExists = true;
         var stringified = JSON.stringify(patient);
         var entry = JSON.parse(stringified).entry;
-        var conditionsArray: Condition[] = [];
+        var conditionsArray: PatientCondition[] = [];
         var codesInArray: string[] = [];
         for (var i = 0; i < entry.length; i++) {
           var thisIndex = JSON.stringify(entry[i]);
@@ -601,7 +605,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
           var code = JSON.parse(coding).code;
           var display = JSON.parse(coding).display;
           if (!codesInArray.includes(code) && clinicalStatus == "active") { // not already listed, and still an ongoing issue
-            var condition = new Condition(code, display, "VA");
+            var condition = new PatientCondition(code, display, "VA");
             conditionsArray.push(condition);
             codesInArray.push(code);
           } 
@@ -626,7 +630,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
               var display = JSON.parse(indexHere).display;
               if (code != "9999999") {
                 if (!codesInArray.includes(code)) {
-                  var condition = new Condition(code, display, "CMS");
+                  var condition = new PatientCondition(code, display, "CMS");
                   conditionsArray.push(condition);
                   codesInArray.push(code);
                 }

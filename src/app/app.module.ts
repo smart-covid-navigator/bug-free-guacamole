@@ -32,6 +32,8 @@ import { LandingPageComponent } from "./routes/home/home.component";
 import { GithubForkUsComponent } from "./universal-components/github-fork-us.component";
 import { TeamComponent } from "./routes/team/team.component";
 import { DBAnalysisComponent } from "./routes/db-analysis/db-analysis.component";
+import { ConditionVisualizationComponent } from "./routes/entry-and-visualization/condition-visualization.component"
+import { ClinicalTrialModalComponent } from "./routes/entry-and-visualization/clinical-trial-modal.component";
 
 // Services
 import { SMARTReferenceService } from "./smart-initialization/smart-reference.service";
@@ -78,6 +80,8 @@ import { CSVReader } from "./routes/entry-and-visualization/genomic-data-provide
     FeedbackFormModalComponent,
     TeamComponent,
     DBAnalysisComponent,
+    ConditionVisualizationComponent,
+    ClinicalTrialModalComponent
 
   ],
   entryComponents: [
@@ -85,7 +89,8 @@ import { CSVReader } from "./routes/entry-and-visualization/genomic-data-provide
     ClassificationsModalComponent,
     DrugModalComponent,
     DiseaseModalComponent,
-    FeedbackFormModalComponent
+    FeedbackFormModalComponent,
+    ClinicalTrialModalComponent
   ],
   providers: [
     SMARTReferenceService,
