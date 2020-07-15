@@ -63,15 +63,18 @@ export class ConditionVisualizationComponent implements OnInit {
                     conditionsArray.push(condition);
                     codesInArray.push(code);
                     console.log(condition);
-                } 
-                for (var j = 0; j < this.conditionList.length; j++) {
-                    var conditionHere = this.conditionList[j];
-                    var codesForCondition = conditionHere.codes;
-                    if (codesForCondition.includes(code)) {
-                        this.conditionList[j].color = 1;
-                        console.log(this.conditionList[j]);
+                    for (var j = 0; j < this.conditionList.length; j++) {
+                        var conditionHere = this.conditionList[j];
+                        var codesForCondition = conditionHere.codes;
+                        if (codesForCondition.includes(code)) {
+                            this.conditionList[j].color = 1;
+                            console.log(this.conditionList[j]);
+                            console.log(code);
+                        }
                     }
-                }
+                } 
+                console.log(code);
+                
             }
             
           });
