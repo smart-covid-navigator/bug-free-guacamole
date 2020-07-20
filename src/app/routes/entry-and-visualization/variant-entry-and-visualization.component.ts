@@ -89,9 +89,10 @@ class VariantWrapper {
       </div>
     </div>
     -->
-    <div id="variantVisualizations">
+    
+    <!-- <div id="variantVisualizations"> -->
       <condition-visualization></condition-visualization>
-    </div>
+    <!-- </div> -->
     
     <!-- Review form question -->
     <div id="askForReviewDiv" *ngIf="userInteractionPoints >= 3 && askForReview">
@@ -534,7 +535,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
 
       var birthDate = JSON.parse(stringified).birthDate;
       var age = this.calculateAge(birthDate);
-      
+      localStorage.setItem("age", age.toString());
       var address = JSON.stringify((JSON.parse(stringified).address)[0]);
       var zipCode = JSON.parse(address).postalCode;
       

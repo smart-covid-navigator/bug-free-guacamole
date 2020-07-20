@@ -6,8 +6,8 @@ Each is described in more detail below.
 
 export class Condition {
     name: string;
-    codes: string[];
-    color: number;
+    codes: string[]; // all possible SNOMED codes for this condition
+    color: number; // 0 if the patient does not have this condition, 1 if the patient does have this condition
     constructor(
         name: string,
         codes: string[]
