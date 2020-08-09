@@ -16,8 +16,8 @@ import {NavigationEnd, Router} from "@angular/router";
         <div class="routeOption {{currentRoute === '/team' ? 'selectedRoute' : 'unselectedRoute'}}" (click)="routeTo('team')">
           <p>Team</p>
         </div>
-        <div class="routeOption {{currentRoute === '/ehr-link' ? 'selectedRoute' : 'unselectedRoute'}}" (click)="routeTo('ehr-link')">
-          <p>EHR Link</p>
+        <div class="routeOption {{currentRoute === '/ehr-login' ? 'selectedRoute' : 'unselectedRoute'}}" (click)="routeTo('ehr-login')">
+          <p>EHR Login</p>
         </div>
         <div class="routeOption {{currentRoute === '/db-analysis' ? 'selectedRoute' : 'unselectedRoute'}}" (click)="routeTo('db-analysis')">
           <p>DB Analysis</p>

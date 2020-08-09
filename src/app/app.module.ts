@@ -23,7 +23,7 @@ import { DrugDetailsModalComponent } from "./routes/entry-and-visualization/vari
 import { GeneInformationComponent } from "./routes/entry-and-visualization/variant-visualization/gene/gene-information.component";
 import { VariantInformationComponent } from "./routes/entry-and-visualization/variant-visualization/variant/variant-information.component";
 import { VariantVisualizationComponent } from "./routes/entry-and-visualization/variant-visualization/variant-visualization.component";
-import { EHRInstructionsComponent } from "./routes/ehr-instructions/ehr-instructions.component";
+import { EHRLoginComponent } from "./routes/ehr-instructions/ehr-instructions.component";
 import { FeedbackFormModalComponent } from "./routes/feedback-form/feedback-form-modal.component";
 import { HeaderComponent } from "./universal-components/header.component";
 import { ClassificationsModalComponent } from "./routes/entry-and-visualization/variant-visualization/variant/classifications-modal.component";
@@ -74,7 +74,7 @@ import { CSVReader } from "./routes/entry-and-visualization/genomic-data-provide
     GeneInformationComponent,
     DrugDetailsModalComponent,
     ClassificationsModalComponent,
-    EHRInstructionsComponent,
+    EHRLoginComponent,
     LandingPageComponent,
     GithubForkUsComponent,
     FeedbackFormModalComponent,

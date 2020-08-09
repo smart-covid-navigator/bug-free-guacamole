@@ -57,6 +57,7 @@ export class VAService {
         options['params'] = patientParams;
         return this.http.get<any>('https://sandbox-api.va.gov/services/fhir/v0/dstu2/Condition?_count=50&patient=' + patientId, options)
         .pipe(map(conditionReturnedData => {
+            console.log(conditionReturnedData);
           return conditionReturnedData;
       }));
     }
