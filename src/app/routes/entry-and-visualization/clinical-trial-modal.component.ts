@@ -13,7 +13,10 @@ import { CSVReader } from "./genomic-data-providers/csv-reader.service"
         </button>
     </div>
     <div class="modal-body">
-        <!-- A bit of info about the drug -->
+        <p>Number of papers: {{totalPapers}}</p>
+        <p>Proportion of significant findings for severity: {{severeProportion}}%</p>
+        <p>Proportion of significant findings for fatality: {{fatalityProportion}}%</p>
+        <!-- A bit of info about the studies -->
         <table class="table table-bordered table-striped" *ngIf="clinicalTrials !== undefined">
             <thead>
             </thead>
@@ -46,9 +49,25 @@ export class ClinicalTrialModalComponent implements OnInit{
     @Input() conditionName: Condition;
     clinicalTrials: ClinicalTrial[] = [];
 
+
+    totalPapers: number = 0;
+
+    studyingSeverity: number = 0;
+    severeSignificant: number = 0;
+    severeProportion: number = 0;
+
+    studyingFatality: number = 0;
+    fatalitySignificant: number = 0;
+    fatalityProportion: number = 0;
+
+    studyingBoth: number = 0;
+    bothSignificant: number = 0;
+    bothProportion: number = 0;
+
     ngOnInit() {
         this.csvReader.readCSV(this.conditionName.name).subscribe(data => {
             this.clinicalTrials = data;
+            this.analyzeStudies();
         });
     }
 
@@ -60,4 +79,47 @@ export class ClinicalTrialModalComponent implements OnInit{
         else result += "white"; 
         return result;
     }
+
+    analyzeStudies() {
+        this.totalPapers = this.clinicalTrials.length;
+        
+        for (var i = 0; i < this.clinicalTrials.length; i++) {
+            var study = this.clinicalTrials[i];
+            if (study.severeSignificant != "") {
+                this.studyingSeverity += 1;
+                if (study.severeSignificant == "Significant") {
+                    this.severeSignificant += 1;
+                }
+            }
+
+            if (study.fatalSignificant != "") {
+                this.studyingFatality += 1;
+                if (study.fatalSignificant == "Significant") {
+                    this.fatalitySignificant += 1;
+                }
+            }
+
+            if (study.severeSignificant != "" && study.fatalSignificant != "") {
+                this.studyingBoth += 1;
+                if (study.severeSignificant == "Significant" && study.fatalSignificant == "Significant") {
+                    this.bothSignificant += 1;
+                }
+            }
+        }
+
+
+        this.severeProportion = this.severeSignificant / this.studyingSeverity;
+        this.severeProportion *= 100;
+        this.severeProportion = Math.round(this.severeProportion);
+
+        this.fatalityProportion = this.fatalitySignificant / this.studyingFatality; 
+        this.fatalityProportion *= 100;
+        this.fatalityProportion = Math.round(this.fatalityProportion);
+
+        this.bothProportion = this.bothSignificant / this.studyingBoth;
+        this.bothProportion *= 100;
+        this.bothProportion = Math.round(this.bothProportion);
+        
+    }
+
 }

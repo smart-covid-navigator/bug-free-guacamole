@@ -671,7 +671,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
   }
 
   routeToInstructions() {
-    this.router.navigate(["ehr-link"]);
+    this.router.navigate(["ehr-login"]);
   }
 
   onToggleAutosync(newVal: boolean) {
