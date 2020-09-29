@@ -7,7 +7,7 @@ import {NavigationEnd, Router} from "@angular/router";
     <div id="greyBackground"></div>
 
     <div id="container">
-      <img src="/assets/logo.svg">
+      <img src="/assets/logo.png">
       <button (click)="logout()">Logout</button>
       <div id="routingOptions">
         <div class="routeOption {{currentRoute === '/home' ? 'selectedRoute' : 'unselectedRoute'}}" (click)="routeTo('home')">

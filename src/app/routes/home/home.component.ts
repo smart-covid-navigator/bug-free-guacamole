@@ -11,21 +11,26 @@ import { Router } from "@angular/router";
     <div class="infoCard">
       <div class="cardContent">
         <div>
-          <h1 class="thick">The Issue</h1>
+          <h1 class="thick">SMART COVID Navigator</h1>
           <hr>
           <p class="regular">
-            In a typical genomic non-SMART Cancer Navigator workflow, oncologists will prescribe a genomic analysis of a patient with a recurrent or metastatic tumor. Next, the genomics laboratory returns an unstructured narrative report relating a set of genes and the variants found in that set. Typically scanned into EHRs as PDF files, these reports persist as irregular unstructured documents of varying lengths. While some reports may be more than 20 pages in length – including characterizations of variants and gene abnormalities, potential targeted therapies, and relevant clinical trial info – others may be brief and without much interpretation. Facing a lack of clear actionability, potential biases in the curation of the reports, and outdated information, oncologists typically access and query several knowledge bases to obtain more comprehensive, up-to-date disease-gene-variant information. Therefore, oncologists must reenter patient data every time they wish to query a knowledge base. Inconsistencies among knowledge bases (i.e. differences in querying syntax, GUIs, APIs, etc.) thus lead to inconveniency and inefficiency.</p>
+          The SMART COVID Navigator connects patient information from multiple EHR servers to an AI- powered knowledge map of COVID-19 research. This will allow clinicians to access the latest data-driven research based on a particular patient’s risk factors. The Navigator builds on the framework developed by the SMART Cancer Navigator, which offered clinical decision support by connecting patient EHR information to cancerous gene-variants. The Navigator is a further step in creating FHIR-protocol based tools to support personalized medicine.
+          The web-based app was built by researchers at the Biomedical Cybernetics Laboratory in Harvard Medical School. It was created using an Angular and bootstrap front-end framework.</p>
         </div>
+        <!--
         <div>
           <h1 class="thick">SMART COVID Navigator's Approach</h1>
           <hr>
           <p class="regular">The SMART Cancer Navigator app securely links patient-specific data from EHRs and genomics laboratories to multiple knowledge bases for interpretation and validation. Through the built-in feedback functionality, meaningful responses regarding the usability and efficacy of the app are conveyed to the designers.
           </p>
         </div>
+        -->
       </div>
       <div class="cardImage" style="min-width: 300px;">
         <div>
-          <img src="/assets/landing-page/app-content.png">
+          <img src="/assets/landing-page/not-logged-in.png">
+          <img src="/assets/landing-page/logged-in.png">
+          <img src="/assets/landing-page/modal-display.png">
         </div>
       </div>
     </div>
