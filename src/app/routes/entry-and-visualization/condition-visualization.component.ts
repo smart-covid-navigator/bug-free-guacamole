@@ -70,9 +70,10 @@ export class ConditionVisualizationComponent implements OnInit {
     getVA(patientId: string) {
         this.vaService.conditionInfo(patientId).subscribe(patient => {
             var age = Number(localStorage.getItem("age"));
-            if (age != null && age > 60) {
+            console.log(localStorage.getItem("age"));
+            // if (age != null && age > 60) {
                 this.conditionList[0].color = 1;
-            }
+            // }
             var stringified = JSON.stringify(patient);
             var entry = JSON.parse(stringified).entry;
             var conditionsArray: PatientCondition[] = [];

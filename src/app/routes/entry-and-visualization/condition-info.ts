@@ -40,3 +40,61 @@ export class ClinicalTrial {
     }
 
 }
+
+export class CancerClinicalTrial {
+    name: string;
+    cancerType: string;
+    numberPatients: number;
+    numberDeaths: number;
+    fatalityRate: number;
+
+    constructor(
+        name: string,
+        cancerType: string,
+        numberPatients: number,
+        numberDeaths: number,
+        fatalityRate: number,
+        
+    ) {
+        this.name = name;
+        this.numberPatients = numberPatients;
+        this.numberDeaths = numberDeaths;
+        this.fatalityRate = fatalityRate;
+        this.cancerType = cancerType;
+    }
+}
+
+export class CancerDrugClinicalTrial {
+    name: string;
+    cancerType: string;
+    drug: string;
+    benefit: string;
+
+    constructor(
+        name: string,
+        cancerType: string,
+        drug: string,
+        benefit: string
+    ) {
+        this.name = name;
+        this.cancerType = cancerType;
+        this.drug = drug;
+        this.benefit = benefit;
+    }
+
+
+}
+
+
+export class Tissue {
+    name: string;
+    files: number; // 1 means just in patient, 2 means just in drugs, 3 means in both
+
+    constructor(
+        name: string,
+        files: number
+    ) {
+        this.name = name;
+        this.files = files;
+    }
+}

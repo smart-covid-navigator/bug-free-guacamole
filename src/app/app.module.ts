@@ -28,12 +28,17 @@ import { FeedbackFormModalComponent } from "./routes/feedback-form/feedback-form
 import { HeaderComponent } from "./universal-components/header.component";
 import { ClassificationsModalComponent } from "./routes/entry-and-visualization/variant-visualization/variant/classifications-modal.component";
 import { VariantEntryAndVisualizationComponent } from "./routes/entry-and-visualization/variant-entry-and-visualization.component";
+import { CovidCancerComponent } from "./routes/entry-and-visualization/covid-cancer.component";
 import { LandingPageComponent } from "./routes/home/home.component";
 import { GithubForkUsComponent } from "./universal-components/github-fork-us.component";
 import { TeamComponent } from "./routes/team/team.component";
 import { DBAnalysisComponent } from "./routes/db-analysis/db-analysis.component";
 import { ConditionVisualizationComponent } from "./routes/entry-and-visualization/condition-visualization.component"
+import { CancerVisualizationComponent } from "./routes/entry-and-visualization/cancer-visualization.component"
 import { ClinicalTrialModalComponent } from "./routes/entry-and-visualization/clinical-trial-modal.component";
+import { CancerTrialsModalComponent } from "./routes/entry-and-visualization/cancer-trials-modal.component"
+import { CovidPatientInformationComponent } from "./routes/entry-and-visualization/covid-cancer-tabs/covid-patient-information.component"
+import { CancerDrugsInformationComponent } from "./routes/entry-and-visualization/covid-cancer-tabs/cancer-drugs-information.component"
 
 // Services
 import { SMARTReferenceService } from "./smart-initialization/smart-reference.service";
@@ -45,6 +50,7 @@ import { DrugsSearchService } from "./routes/entry-and-visualization/variant-vis
 import { MyGeneInfoSearchService } from "./routes/entry-and-visualization/genomic-data-providers/mygeneinfo-search.service";
 import { JSONNavigatorService } from "./routes/entry-and-visualization/genomic-data-providers/utilities/json-navigator.service";
 import { CSVReader } from "./routes/entry-and-visualization/genomic-data-providers/csv-reader.service"
+import { XLSXReader } from "./routes/entry-and-visualization/genomic-data-providers/xlsx-reader.service"
 
 @NgModule({
   imports:      [
@@ -61,6 +67,7 @@ import { CSVReader } from "./routes/entry-and-visualization/genomic-data-provide
     AppComponent,
     HeaderComponent,
     VariantEntryAndVisualizationComponent,
+    CovidCancerComponent,
     VariantVisualizationComponent,
     VariantSelectorComponent,
     SMARTLaunchComponent,
@@ -81,7 +88,11 @@ import { CSVReader } from "./routes/entry-and-visualization/genomic-data-provide
     TeamComponent,
     DBAnalysisComponent,
     ConditionVisualizationComponent,
-    ClinicalTrialModalComponent
+    CancerVisualizationComponent,
+    ClinicalTrialModalComponent,
+    CancerTrialsModalComponent,
+    CovidPatientInformationComponent,
+    CancerDrugsInformationComponent
 
   ],
   entryComponents: [
@@ -90,7 +101,10 @@ import { CSVReader } from "./routes/entry-and-visualization/genomic-data-provide
     DrugModalComponent,
     DiseaseModalComponent,
     FeedbackFormModalComponent,
-    ClinicalTrialModalComponent
+    ClinicalTrialModalComponent,
+    CancerTrialsModalComponent,
+    CovidPatientInformationComponent,
+    CancerDrugsInformationComponent
   ],
   providers: [
     SMARTReferenceService,
@@ -101,7 +115,8 @@ import { CSVReader } from "./routes/entry-and-visualization/genomic-data-provide
     ClinicalTrialsService,
     DrugsSearchService,
     JSONNavigatorService,
-    CSVReader
+    CSVReader,
+    XLSXReader
   ],
   bootstrap: [
     AppComponent

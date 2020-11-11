@@ -535,6 +535,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
 
       var birthDate = JSON.parse(stringified).birthDate;
       var age = this.calculateAge(birthDate);
+      console.log(age)
       localStorage.setItem("age", age.toString());
       var address = JSON.stringify((JSON.parse(stringified).address)[0]);
       var zipCode = JSON.parse(address).postalCode;

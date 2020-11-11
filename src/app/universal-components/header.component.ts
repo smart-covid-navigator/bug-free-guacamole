@@ -28,6 +28,10 @@ import {NavigationEnd, Router} from "@angular/router";
              (click)="routeTo('app');">
           <p>Try It Out!</p>
         </div>
+        <div class="routeOption {{currentRoute === '/cancer' ? 'selectedRoute' : 'unselectedRoute'}}"
+             (click)="routeTo('cancer');">
+          <p>Covid-Cancer</p>
+        </div>
       </div>
     </div>
   `,
