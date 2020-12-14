@@ -3,6 +3,7 @@ import { XLSXReader } from "./genomic-data-providers/xlsx-reader.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ClinicalTrialModalComponent } from "./clinical-trial-modal.component"
 import { CancerTrialsModalComponent } from "./cancer-trials-modal.component"
+import { CancerSummaryModalComponent } from "./covid-cancer-tabs/cancer-summary-modal.component"
 import { Tissue } from "./condition-info"
 
 @Component({
@@ -10,6 +11,7 @@ import { Tissue } from "./condition-info"
     template: `
         <div class="textBlock">
             <h3>Cancer </h3>
+            <button (click)="summaryModal()" id="normal">Summary</button>
             <span *ngFor="let tissue of tissueList">
                 <button (click)="showModal(tissue)" id="normal" >{{tissue.name}}</button>
             </span>
@@ -69,6 +71,10 @@ export class CancerVisualizationComponent implements OnInit {
         
         const modalRef = this.modalService.open(CancerTrialsModalComponent, {size: "lg"});
         modalRef.componentInstance.tissue = tissue;
+    }
+
+    summaryModal() {
+        const modalRef = this.modalService.open(CancerSummaryModalComponent, {size: "lg"});
     }
 
 }

@@ -39,6 +39,7 @@ import { ClinicalTrialModalComponent } from "./routes/entry-and-visualization/cl
 import { CancerTrialsModalComponent } from "./routes/entry-and-visualization/cancer-trials-modal.component"
 import { CovidPatientInformationComponent } from "./routes/entry-and-visualization/covid-cancer-tabs/covid-patient-information.component"
 import { CancerDrugsInformationComponent } from "./routes/entry-and-visualization/covid-cancer-tabs/cancer-drugs-information.component"
+import { CancerSummaryModalComponent } from "./routes/entry-and-visualization/covid-cancer-tabs/cancer-summary-modal.component"
 
 // Services
 import { SMARTReferenceService } from "./smart-initialization/smart-reference.service";
@@ -92,7 +93,8 @@ import { XLSXReader } from "./routes/entry-and-visualization/genomic-data-provid
     ClinicalTrialModalComponent,
     CancerTrialsModalComponent,
     CovidPatientInformationComponent,
-    CancerDrugsInformationComponent
+    CancerDrugsInformationComponent,
+    CancerSummaryModalComponent
 
   ],
   entryComponents: [
@@ -104,7 +106,8 @@ import { XLSXReader } from "./routes/entry-and-visualization/genomic-data-provid
     ClinicalTrialModalComponent,
     CancerTrialsModalComponent,
     CovidPatientInformationComponent,
-    CancerDrugsInformationComponent
+    CancerDrugsInformationComponent,
+    CancerSummaryModalComponent
   ],
   providers: [
     SMARTReferenceService,

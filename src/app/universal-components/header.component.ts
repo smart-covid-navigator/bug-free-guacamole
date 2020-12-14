@@ -30,7 +30,7 @@ import {NavigationEnd, Router} from "@angular/router";
         </div>
         <div class="routeOption {{currentRoute === '/cancer' ? 'selectedRoute' : 'unselectedRoute'}}"
              (click)="routeTo('cancer');">
-          <p>Covid-Cancer</p>
+          <p>COVID19-Cancer</p>
         </div>
       </div>
     </div>
