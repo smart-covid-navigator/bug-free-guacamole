@@ -11,7 +11,7 @@ import { Tissue } from "./condition-info"
     template: `
         <div class="textBlock">
             <h3>Cancer </h3>
-            <button (click)="summaryModal()" id="normal">Summary</button>
+            <button (click)="summaryModal()" id="normal" style="background-color:lightblue">Summary</button>
             <span *ngFor="let tissue of tissueList">
                 <button (click)="showModal(tissue)" id="normal" >{{tissue.name}}</button>
             </span>

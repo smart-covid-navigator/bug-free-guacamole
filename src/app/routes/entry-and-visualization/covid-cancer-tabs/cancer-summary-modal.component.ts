@@ -58,6 +58,7 @@ export class CancerSummaryModalComponent implements OnInit{
         new TissueTypeSummary("Lung"),
         new TissueTypeSummary("Lymphoid"),
         new TissueTypeSummary("Myeloid"),
+        new TissueTypeSummary("Not specified"),
         new TissueTypeSummary("Ovary/Fallopian tube"),
         new TissueTypeSummary("Pleura"),
         new TissueTypeSummary("Prostate"),
@@ -75,7 +76,7 @@ export class CancerSummaryModalComponent implements OnInit{
             var tissueName = study["Tissue type"];
             var cancerCovid = study["Number of cancer patients with COVID-19"];
             var deaths = study["Number of patient deaths"];
-            if (cancerCovid != 0) {
+            if (cancerCovid != 0 && deaths != "Not applicable") {
                 
                 for (var j = 0; j < this.tissueTypes.length; j++) {
                     console.log("hello")

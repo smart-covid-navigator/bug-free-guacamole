@@ -65,7 +65,7 @@ export class CovidPatientInformationComponent implements OnInit{
                 var cancerCovid = study["Number of cancer patients with COVID-19"];
                 var deaths = study["Number of patient deaths"];
                 var fatalityRate = study["Case fatality rate (%)"]
-                if (cancerCovid != 0) {
+                if (cancerCovid != 0 && deaths != "Not applicable") {
                     this.totalCancerCovid += cancerCovid;
                     this.totalDeaths += deaths;
 
