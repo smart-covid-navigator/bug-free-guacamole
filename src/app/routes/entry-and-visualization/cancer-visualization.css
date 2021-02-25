@@ -1,0 +1,14 @@
+#normal {
+    margin: 12px;
+    font-size: 20px;
+}
+.textBlock {
+    padding: 15px;
+    margin-top: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
+    background-color: white;
+}
+p {
+    font-size: 20px;
+}

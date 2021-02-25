@@ -1,0 +1,36 @@
+<div id="greyBackground"></div>
+
+<div id="container">
+  <img src="/assets/logo.png">
+  <div id="routingOptions">
+    <div class="routeOption {{currentRoute === '/home' ? 'selectedRoute' : 'unselectedRoute'}}" (click)="routeTo('home')">
+      <p>Home</p>
+    </div>
+    <div class="routeOption {{currentRoute === '/team' ? 'selectedRoute' : 'unselectedRoute'}}" (click)="routeTo('team')">
+      <p>Team</p>
+    </div>
+    <div class="routeOption {{currentRoute === '/ehr-login' ? 'selectedRoute' : 'unselectedRoute'}}" (click)="routeTo('ehr-login')">
+      <p>EHR Login</p>
+    </div>
+    <div class="routeOption {{currentRoute === '/db-analysis' ? 'selectedRoute' : 'unselectedRoute'}}" (click)="routeTo('db-analysis')">
+      <p>DB Analysis</p>
+    </div>
+    <div style="width: 1px; height: 76px; float: left; background-color: #a4a4a4; margin: 2px 3px;">
+    </div>
+    <div class="routeOption {{currentRoute === '/app' ? 'selectedRoute' : 'unselectedRoute'}}"
+         (click)="routeTo('app');">
+      <p>Try It Out!</p>
+    </div>
+    <div class="routeOption {{currentRoute === '/cancer' ? 'selectedRoute' : 'unselectedRoute'}}"
+         (click)="routeTo('cancer');">
+      <p>COVID19-Cancer</p>
+    </div>
+
+    <select id="lang-switch" (change)="leaveChange()">
+        <option value="english" selected>🇺🇸English</option>
+        <option value="spanish">🇪🇸Español</option>
+        <option value="chinese">🇨🇳中文</option>
+    </select>
+  </div>
+</div>
+<!--<button (click)="logout()">Logout</button>-->

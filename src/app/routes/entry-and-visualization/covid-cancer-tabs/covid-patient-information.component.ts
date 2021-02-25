@@ -58,7 +58,7 @@ export class CovidPatientInformationComponent implements OnInit{
         // this.totalPapers = this.patientData.length;
         for (var i = 1; i < this.patientData.length; i++) {
             var study = this.patientData[i];
-            if (study["Tissue type"] == this.tissue.name) {
+            if (study["Tissue type"] == this.tissue.name_english) {
                 this.totalPapers += 1;
                 var title = study["Title"];
                 var cancerType = study["Cancer type"];
@@ -79,7 +79,7 @@ export class CovidPatientInformationComponent implements OnInit{
         console.log(this.totalDeaths);
         this.percentDeaths = Math.round(this.totalDeaths / this.totalCancerCovid * 100);
         console.log(this.percentDeaths);
-        
+
     }
 
 }

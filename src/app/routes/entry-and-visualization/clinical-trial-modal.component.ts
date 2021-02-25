@@ -2,44 +2,11 @@ import { Component, Input, OnInit } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { ClinicalTrial, Condition } from "./condition-info";
 import { CSVReader } from "./genomic-data-providers/csv-reader.service"
+import { environment } from 'environments/environment';
 
 @Component({
     selector: "clinical-trial-modal",
-    template: `
-    <div class="modal-header">
-        <h4 class="modal-title">{{conditionName.name}}</h4>
-            <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <p>Number of papers: {{totalPapers}}</p>
-        <p>Proportion of significant findings for severity: {{severeProportion}}%</p>
-        <p>Proportion of significant findings for fatality: {{fatalityProportion}}%</p>
-        <!-- A bit of info about the studies -->
-        <table class="table table-bordered table-striped" *ngIf="clinicalTrials !== undefined">
-            <thead>
-            </thead>
-            <tbody>
-                <ng-container *ngIf="clinicalTrials !== undefined && clinicalTrials.length > 0">
-                    <tr>
-                        <td style="font-weight: bold;">Study Name</td>
-                        <td style="font-weight: bold;">Date</td>
-                        <td style="font-weight: bold;">Severity Significance</td>
-                        <td style="font-weight: bold;">Fatality Significance</td>
-                    </tr>
-                    <tr *ngFor="let trial of clinicalTrials">
-                        <td><a href="{{trial.link}}">{{trial.name}}</a></td>
-                        <td>{{trial.date}}</td>
-                        <td>{{trial.severeSignificant}}</td>
-                        <td>{{trial.fatalSignificant}}</td>
-                    </tr>
-                </ng-container>
-            </tbody>
-        </table>
-        <br>
-    </div>
-    `
+    templateUrl: './clinical-trial-modal.html',
 })
 export class ClinicalTrialModalComponent implements OnInit{
     constructor (
@@ -47,8 +14,8 @@ export class ClinicalTrialModalComponent implements OnInit{
         public csvReader: CSVReader) {}
 
     @Input() conditionName: Condition;
-    clinicalTrials: ClinicalTrial[] = [];
 
+    clinicalTrials: ClinicalTrial[] = [];
 
     totalPapers: number = 0;
 
@@ -65,10 +32,33 @@ export class ClinicalTrialModalComponent implements OnInit{
     bothProportion: number = 0;
 
     ngOnInit() {
-        this.csvReader.readCSV(this.conditionName.name).subscribe(data => {
+        this.csvReader.readCSV(this.conditionName.name_english).subscribe(data => {
             this.clinicalTrials = data;
             this.analyzeStudies();
-        });
+            });
+
+        this.update_lang();
+    }
+
+    update_lang() {
+        var spanish = document.getElementById("spanish");
+        var english = document.getElementById("english");
+        var chinese = document.getElementById("chinese");
+        english.style.display = "none";
+        spanish.style.display = "none";
+        chinese.style.display = "none";
+
+        if (environment.language == "english") {
+            english.style.display = "block";
+        }
+
+        if (environment.language == "spanish") {
+            spanish.style.display = "block";
+        }
+
+        if (environment.language == "chinese") {
+            chinese.style.display = "block";
+        }
     }
 
     styleSeverity(significance: string) {
@@ -76,13 +66,13 @@ export class ClinicalTrialModalComponent implements OnInit{
         var result = "background-color:";
         if (significance == "Significant") result += "green";
         else if (significance == "Not Significant") result += "red";
-        else result += "white"; 
+        else result += "white";
         return result;
     }
 
     analyzeStudies() {
         this.totalPapers = this.clinicalTrials.length;
-        
+
         for (var i = 0; i < this.clinicalTrials.length; i++) {
             var study = this.clinicalTrials[i];
             if (study.severeSignificant != "") {
@@ -112,14 +102,14 @@ export class ClinicalTrialModalComponent implements OnInit{
         this.severeProportion *= 100;
         this.severeProportion = Math.round(this.severeProportion);
 
-        this.fatalityProportion = this.fatalitySignificant / this.studyingFatality; 
+        this.fatalityProportion = this.fatalitySignificant / this.studyingFatality;
         this.fatalityProportion *= 100;
         this.fatalityProportion = Math.round(this.fatalityProportion);
 
         this.bothProportion = this.bothSignificant / this.studyingBoth;
         this.bothProportion *= 100;
         this.bothProportion = Math.round(this.bothProportion);
-        
+
     }
 
 }

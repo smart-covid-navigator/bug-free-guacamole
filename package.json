@@ -28,6 +28,7 @@
     "csv-parser": "^2.3.3",
     "exceljs": "^4.1.0",
     "fhirclient": "^0.1.11",
+    "jquery": "^3.5.1",
     "ngx-csv-parser": "0.0.3",
     "ngx-papaparse": "^3.0.4",
     "papaparse": "^5.2.0",

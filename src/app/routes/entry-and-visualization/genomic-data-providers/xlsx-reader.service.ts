@@ -9,37 +9,37 @@ import * as XLSX from 'xlsx';
 export class XLSXReader {
     constructor(private http: HttpClient) {}
     tissueArray: Tissue[] = [
-        
-        new Tissue("Bladder/Urinary tract", 3),
-        new Tissue("Bone and soft tissue", 1),
-        new Tissue("Bowel", 3),
-        new Tissue("Bowel, Esophagus/Stomach", 2),
-        new Tissue("Brain/CNS", 3),
-        new Tissue("Breast", 3),
-        new Tissue("Cervix", 1),
-        new Tissue("Esophagus/Stomach", 2),
-        new Tissue("Genitourinary", 1),
-        new Tissue("Gynecological", 1),
-        new Tissue("Head and neck", 3),
-        new Tissue("Hematologic not specified", 1),
-        new Tissue("Kidney", 3),
-        new Tissue("Liver", 3),
-        new Tissue("Lung", 3),
-        new Tissue("Lymphoid", 3),
-        new Tissue("Lymphoid, Myeloid", 2),
-        new Tissue("Myeloid", 3),
-        new Tissue("Not specified", 3),
-        new Tissue("Ovary/Fallopian tube", 3),
-        new Tissue("Pancreas", 2),
-        new Tissue("Pleura", 1),
-        new Tissue("Prostate", 3),
-        new Tissue("Sarcoma", 2),
-        new Tissue("Skin", 3),
-        new Tissue("Soft tissue", 2),
-        new Tissue("Testis", 2),
-        new Tissue("Thoracic", 1),
-        new Tissue("Thymus", 3),
-        new Tissue("Thyroid", 2)
+
+        new Tissue("Bladder/Urinary tract", "Vejiga / tracto urinario", "膀胱/尿路", 3),
+        new Tissue("Bone and soft tissue", "Hueso y tejido blando", "骨和软组织", 1),
+        new Tissue("Bowel", "Intestino", "肠", 3),
+        new Tissue("Bowel, Esophagus/Stomach", "Intestino, esófago / estómago", "肠，食道/胃", 2),
+        new Tissue("Brain/CNS", "Cerebro / sistema nervioso central", "脑/中枢神经系统", 3),
+        new Tissue("Breast", "Pecho", "胸部", 3),
+        new Tissue("Cervix","Cuello uterino","宫颈", 1),
+        new Tissue("Esophagus/Stomach","Esófago / Estómago","食道/胃", 2),
+        new Tissue("Genitourinary","Genitourinaria","泌尿生殖", 1),
+        new Tissue("Gynecological","Ginecológico","妇科", 1),
+        new Tissue("Head and neck","Cabeza y cuello","头颈", 3),
+        new Tissue("Hematologic not specified","Hematológico no especificado","未指定血液学", 1),
+        new Tissue("Kidney","Riñón","肾", 3),
+        new Tissue("Liver","Hígado","肝脏", 3),
+        new Tissue("Lung","Pulmón","肺", 3),
+        new Tissue("Lymphoid","Linfoide","淋巴", 3),
+        new Tissue("Lymphoid, Myeloid","Linfoide, mieloide","淋巴，骨髓", 2),
+        new Tissue("Myeloid","Mieloide","髓样", 3),
+        new Tissue("Not specified","No especificado","未标明", 3),
+        new Tissue("Ovary/Fallopian tube","Ovario / trompa de Falopio","子房/输卵管", 3),
+        new Tissue("Pancreas","Páncreas","胰腺", 2),
+        new Tissue("Pleura","Pleura","胸膜", 1),
+        new Tissue("Prostate","Próstata","前列腺", 3),
+        new Tissue("Sarcoma","Sarcoma","肉瘤", 2),
+        new Tissue("Skin","Piel","皮肤", 3),
+        new Tissue("Soft tissue", "Tejido suave","软组织", 2),
+        new Tissue("Testis", "Testículo", "睾丸", 2),
+        new Tissue("Thoracic", "Torácica","胸椎", 1),
+        new Tissue("Thymus","Timo","胸腺", 3),
+        new Tissue("Thyroid","Tiroides","甲状腺", 2)
     ]
     readPatientXLSX(fileName: string) {
         return this.http.get("assets/20201015_rebootrx_covid19_covidcancer_download.xlsx", { responseType: "blob" } ).map(data => {
@@ -49,11 +49,11 @@ export class XLSXReader {
                 /* create workbook */
                 const binarystr: string = e.target.result;
                 const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: "binary" });
-                
+
                 /* selected the first sheet */
                 const wsname: string = wb.SheetNames[0];
                 const ws: XLSX.WorkSheet = wb.Sheets[wsname];
-                
+
                 /* save data */
                 const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
                 console.log(data); // Data will be logged in array format containing objects
@@ -61,7 +61,7 @@ export class XLSXReader {
                 // console.log(localStorage.getItem("covidData"));
                 return data;
             }
-            
+
             // return "HELLO"
         });
     }
@@ -74,11 +74,11 @@ export class XLSXReader {
                 /* create workbook */
                 const binarystr: string = e.target.result;
                 const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: "binary" });
-                
+
                 /* selected the first sheet */
                 const wsname: string = wb.SheetNames[0];
                 const ws: XLSX.WorkSheet = wb.Sheets[wsname];
-                
+
                 /* save data */
                 const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
                 console.log(data); // Data will be logged in array format containing objects
@@ -86,7 +86,7 @@ export class XLSXReader {
                 // console.log(localStorage.getItem("covidData"));
                 return data;
             }
-            
+
             // return "HELLO"
         });
     }
@@ -102,11 +102,11 @@ export class XLSXReader {
     //     /* create workbook */
     //     const binarystr: string = e.target.result;
     //     const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: ‘binary’ });
-        
+
     //     /* selected the first sheet */
     //     const wsname: string = wb.SheetNames[0];
     //     const ws: XLSX.WorkSheet = wb.Sheets[wsname];
-        
+
     //     /* save data */
     //     const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
     //     console.log(data); // Data will be logged in array format containing objects
@@ -120,7 +120,7 @@ export class XLSXReader {
 // https://stackblitz.com/edit/angular-excel-read-table?file=src%2Fapp%2Fsheet.component.ts
     readCSV(fileName: string) {
         var trialArray: ClinicalTrial[] = [];
-        
+
         return this.http.get("/assets/risk-factors/" + fileName + ".csv", {responseType: 'text'}).map(data => {
             var csvToRows = data.split("\n");
             for (var i = 1; i < csvToRows.length; i++) {
@@ -152,7 +152,7 @@ export class XLSXReader {
         })
     }
 
-    
+
 
     // search(searchTerm: string) {
     //     var possibilities: Condition[] = [];
@@ -165,7 +165,7 @@ export class XLSXReader {
     //         if (lowerCase.includes(searchTerm)) {
     //             possibilities.push(condition);
     //         }
-    //     } 
+    //     }
     //     return Observable.of(possibilities);
     // }
 }
