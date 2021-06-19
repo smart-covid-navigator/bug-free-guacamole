@@ -1,6 +1,6 @@
 import {Component, Output, EventEmitter} from "@angular/core";
 import {NavigationEnd, Router} from "@angular/router";
-import { environment } from 'environments/environment';
+import { environment } from '../../environments/environment';
 
 
 @Component({

@@ -4,7 +4,9 @@
 import { Component } from "@angular/core";
 import { trigger, state, style, animate, transition } from "@angular/animations";
 import { Router } from "@angular/router";
-import { environment } from 'environments/environment';
+import { environment } from '../../../environments/environment';
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { CommentModalComponent} from "./comment-modal.component"
 
 @Component({
     selector: "home",
@@ -12,7 +14,8 @@ import { environment } from 'environments/environment';
     styleUrls: ['./home.css']
 })
 export class LandingPageComponent {
-    constructor (private router: Router) {
+    constructor (private router: Router,
+        private modalService: NgbModal,) {
     }
 
     navigateToVisualization() {
@@ -43,4 +46,9 @@ export class LandingPageComponent {
             chinese.style.display = "block";
         }
     }
+    showCommentModal() {
+        const modalRef = this.modalService.open(CommentModalComponent, {size: "lg"});
+      }
+
+
 }
