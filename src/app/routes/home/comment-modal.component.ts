@@ -1,6 +1,5 @@
 /**
- * A part of the result visualization component, which displays the drugs that will be effective against genes
- * or variants.
+ * Modal for submitting comments
  */
 
  import { Component, Input } from "@angular/core";
