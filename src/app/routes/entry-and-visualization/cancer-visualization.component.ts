@@ -5,7 +5,7 @@ import { ClinicalTrialModalComponent } from "./clinical-trial-modal.component"
 import { CancerTrialsModalComponent } from "./cancer-trials-modal.component"
 import { CancerSummaryModalComponent } from "./covid-cancer-tabs/cancer-summary-modal.component"
 import { Tissue } from "./condition-info"
-import { environment } from 'environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: "cancer-visualization",
