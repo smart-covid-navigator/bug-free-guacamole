@@ -21,7 +21,7 @@ export class HeaderComponent {
   currentRoute: string = "/app";
 
   leaveChange() {
-      environment.language = document.getElementById("lang-switch").value;
+      environment.language = document.getElementById("lang-switch").nodeValue;
   }
 
   routeTo(routeLoc: string) {
