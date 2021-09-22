@@ -6,21 +6,13 @@ Each is described in more detail below.
 
 export class Condition {
     name: string;
-    name_english: string;
-    name_spanish: string;
-    name_chinese: string;
     codes: string[]; // all possible SNOMED codes for this condition
     color: number; // 0 if the patient does not have this condition, 1 if the patient does have this condition
     constructor(
-        name_english: string,
-        name_spanish: string,
-        name_chinese: string,
+        name: string,
         codes: string[]
     ) {
-        this.name = name_english;
-        this.name_english = name_english;
-        this.name_spanish = name_spanish;
-        this.name_chinese = name_chinese;
+        this.name = name;
         this.codes = codes;
         this.color = 0;
     }
@@ -62,7 +54,7 @@ export class CancerClinicalTrial {
         numberPatients: number,
         numberDeaths: number,
         fatalityRate: number,
-
+        
     ) {
         this.name = name;
         this.numberPatients = numberPatients;
@@ -96,21 +88,13 @@ export class CancerDrugClinicalTrial {
 
 export class Tissue {
     name: string;
-    name_english: string;
-    name_spanish: string;
-    name_chinese: string;
     files: number; // 1 means just in patient, 2 means just in drugs, 3 means in both
 
     constructor(
-        name_english: string,
-        name_spanish: string,
-        name_chinese: string,
+        name: string,
         files: number
     ) {
-        this.name = name_english;
-        this.name_english = name_english;
-        this.name_spanish = name_spanish;
-        this.name_chinese = name_chinese;
+        this.name = name;
         this.files = files;
     }
 }

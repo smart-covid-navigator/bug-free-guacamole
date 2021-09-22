@@ -5,23 +5,56 @@ import { ClinicalTrialModalComponent } from "./clinical-trial-modal.component"
 import { CancerTrialsModalComponent } from "./cancer-trials-modal.component"
 import { CancerSummaryModalComponent } from "./covid-cancer-tabs/cancer-summary-modal.component"
 import { Tissue } from "./condition-info"
-import { environment } from '../../../environments/environment';
 
 @Component({
     selector: "cancer-visualization",
-    templateUrl: './cancer-visualization.html',
-    styleUrls: ['./cancer-visualization.css']
+    template: `
+        <div class="textBlock">
+            <h3>Cancer </h3>
+            <button (click)="summaryModal()" id="normal" style="background-color:lightblue">Summary</button>
+            <span *ngFor="let tissue of tissueList">
+                <button (click)="showModal(tissue)" id="normal" >{{tissue.name}}</button>
+            </span>
+        </div>
+
+        <div class="textBlock">
+            <h3>Legend</h3>
+            <p>
+                Listed above are cancer tissue types. Select one to see more information.
+                <br>
+                The first tab shows outcome statistics for patients with a certain type of cancer and COVID-19. Specifically, it shows the fatality rate for these individuals.
+                <br>
+                The second tab shows clinical studies testing the effectiveness of certain drugs on cancer outcomes. These are drugs that are currently being tested for their effectiveness in treating COVID-19, but could also be useful for cancer treatment.
+            </p>
+        </div>
+    `,
+    styles: [`
+        #normal {
+            margin: 12px;
+            font-size: 20px;
+        }
+        .textBlock {
+            padding: 15px;
+            margin-top: 2%;
+            margin-left: 4%;
+            margin-right: 4%;
+            background-color: white;
+        }
+        p {
+            font-size: 20px;
+        }
+    `]
 })
 export class CancerVisualizationComponent implements OnInit {
     constructor(
         private xlsxReader: XLSXReader,
         private modalService: NgbModal
-    ) {}
-
+        ) {}
+    
     tissueList: Tissue[] = [];
     patientConditions: string[] = [];
     loggedIn: boolean = false;
-
+    
     ngOnInit() {
         this.tissueList = this.xlsxReader.tissueArray;
 
@@ -31,45 +64,11 @@ export class CancerVisualizationComponent implements OnInit {
         this.xlsxReader.readDrugsXLSX("hello").subscribe(data => {
             // just to get the localStorage into the system
         })
-
-        this.update_lang();
     }
 
-    update_lang() {
-        var spanish = document.getElementById("spanish");
-        var english = document.getElementById("english");
-        var chinese = document.getElementById("chinese");
-        english.style.display = "none";
-        spanish.style.display = "none";
-        chinese.style.display = "none";
-
-        if (environment.language == "english") {
-            english.style.display = "inline-block";
-        }
-
-        if (environment.language == "spanish") {
-            spanish.style.display = "inline-block";
-        }
-
-        if (environment.language == "chinese") {
-            chinese.style.display = "inline-block";
-        }
-
-        for (var i = 0; i < this.tissueList.length; i++) {
-            if (environment.language == "english"){
-                this.tissueList[i].name = this.tissueList[i].name_english;
-            }
-            if (environment.language == "spanish"){
-                this.tissueList[i].name = this.tissueList[i].name_spanish;
-            }
-            if (environment.language == "chinese"){
-                this.tissueList[i].name = this.tissueList[i].name_chinese;
-            }
-        }
-    }
-
+    
     showModal(tissue: Tissue) {
-
+        
         const modalRef = this.modalService.open(CancerTrialsModalComponent, {size: "lg"});
         modalRef.componentInstance.tissue = tissue;
     }
