@@ -41,6 +41,7 @@ import { CovidPatientInformationComponent } from "./routes/entry-and-visualizati
 import { CancerDrugsInformationComponent } from "./routes/entry-and-visualization/covid-cancer-tabs/cancer-drugs-information.component"
 import { CancerSummaryModalComponent } from "./routes/entry-and-visualization/covid-cancer-tabs/cancer-summary-modal.component"
 import { CommentModalComponent} from "./routes/home/comment-modal.component"
+import { LogoutComponent } from "./universal-components/logout.component";
 
 // Services
 import { SMARTReferenceService } from "./smart-initialization/smart-reference.service";
@@ -96,7 +97,8 @@ import { XLSXReader } from "./routes/entry-and-visualization/genomic-data-provid
     CovidPatientInformationComponent,
     CancerDrugsInformationComponent,
     CancerSummaryModalComponent,
-    CommentModalComponent
+    CommentModalComponent,
+    LogoutComponent
 
   ],
   entryComponents: [

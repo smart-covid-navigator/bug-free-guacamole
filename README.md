@@ -8,7 +8,7 @@ This app - based on the SMART Cancer Navigator (https://smart-cancer-navigator.g
 
 ### Running a local instance of SMART Cancer Navigator
 1. Ensure you have node/npm and the Angular CLI installed: ```npm install -g @angular/cli```.  
-2. ```git clone https://github.com/smart-cancer-navigator/Application /your/folder/path```
+2. ```git clone https://github.com/smart-covid-navigator/Covid-Application /your/folder/path```
 3. ```cd /your/folder/path```
 4. ```npm install``` to install npm packages.  
 5. ```git submodule init``` and then ```git submodule update --recursive``` to get required submodules.  
