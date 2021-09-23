@@ -13,7 +13,7 @@ import { VAService } from "../login-services/va.service"
         <div class="textBlock">
             <h3>Conditions</h3>
             <span *ngFor="let condition of conditionList">
-                <button (click)="showModal(condition)" id="normal" [ngStyle]="{'background-color':condition.color === 1 ? '#05e32a' : '#dedede'}">{{condition.name}}</button>
+                <button (click)="showModal(condition)" id="normal" [ngStyle]="{'background-color':condition.color === 1 ? '#ff9100' : '#dedede'}">{{condition.name}}</button>
             </span>
         </div>
 
@@ -24,7 +24,7 @@ import { VAService } from "../login-services/va.service"
                 <br>
                 Click each condition to see information on recent studies conducted involving each of these risk factors.
                 <br>
-                If you are logged into the VA server, some conditions might highlight as <span style="color: #05e32a">green</span> above. This signifies that the condition (or some form of it) is present in your profile. 
+                If you are logged into the VA server, some conditions might highlight as <span style="color: #ff9100">orange</span> above. This signifies that the condition (or some form of it) is present in your profile. 
             </p>
         </div>
     `,
