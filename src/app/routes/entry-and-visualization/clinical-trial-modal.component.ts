@@ -14,8 +14,8 @@ import { CSVReader } from "./genomic-data-providers/csv-reader.service"
     </div>
     <div class="modal-body">
         <p>Number of papers: {{totalPapers}}</p>
-        <p>Proportion of significant findings for severity: {{severeProportion}}%</p>
-        <p>Proportion of significant findings for fatality: {{fatalityProportion}}%</p>
+        <p>Proportion of significant findings for severity: {{severeProportion}}% <span style="color:red" *ngIf="severeProportion >= 50">The proportion is above 50%</span></p>
+        <p>Proportion of significant findings for fatality: {{fatalityProportion}}% <span style="color:red" *ngIf="severeProportion >= 50">The proportion is above 50%</span></p>
         <!-- A bit of info about the studies -->
         <table class="table table-bordered table-striped" *ngIf="clinicalTrials !== undefined">
             <thead>
