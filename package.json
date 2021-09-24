@@ -4,20 +4,17 @@
   "license": "Apache-2",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve --port 4200 --proxy-config proxy.conf.json --ssl",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",
-    "@angular/cli": "^12.2.7",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
-    "@angular/compiler-cli": "^6.1.10",
     "@angular/core": "^6.1.0",
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
@@ -35,23 +32,20 @@
     "ngx-csv-parser": "0.0.3",
     "ngx-papaparse": "^3.0.4",
     "papaparse": "^5.2.0",
-    "path": "^0.12.7",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
-    "typescript": "^2.9.2",
     "xlsx": "^0.16.8",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.10.0",
-    "@angular/cli": "^12.2.7",
-    "@angular/compiler-cli": "^6.1.10",
+    "@angular/cli": "^6.1.1",
+    "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~10.5.5",
     "codelyzer": "~4.4.2",
-    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~3.1.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.5",
@@ -64,9 +58,5 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "^2.9.2"
-  },
-  "engines": {
-    "node": "12.16.1",
-    "npm": "6.14.8"
   }
 }
