@@ -65,6 +65,10 @@ export class ConditionVisualizationComponent implements OnInit {
             this.vaService.accessToken = currentUser['access_token'];
             this.getVA(currentUser['patient']);
         }
+
+        this.csvReader.readPatientXLSX("hello").subscribe(data => {
+            // just to get the localStorage into the system
+        })
     }
 
     getVA(patientId: string) {

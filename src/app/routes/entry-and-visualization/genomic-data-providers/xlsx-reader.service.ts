@@ -58,7 +58,7 @@ export class XLSXReader {
                 const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
                 console.log(data); // Data will be logged in array format containing objects
                 localStorage.setItem("covidData", JSON.stringify(data));
-                // console.log(localStorage.getItem("covidData"));
+                console.log(localStorage.getItem("covidData"));
                 return data;
             }
             

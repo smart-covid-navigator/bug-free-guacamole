@@ -8,8 +8,11 @@ const options = {
 };
 @Injectable({ providedIn: 'root' })
 export class VAService {
-    clientId: string = '0oa7hyx727mtpNfKi2p7';
-    clientSecret: string = 'VcN_x8AIuFEnZ8oTHUMd3UnzsTeYp3XWUKscToWy';
+
+    // clientId: string = '0oa7hyx727mtpNfKi2p7'; // development
+    // clientSecret: string = 'VcN_x8AIuFEnZ8oTHUMd3UnzsTeYp3XWUKscToWy'; // development
+    clientId: string = '0oacwflnzuid0X5XX2p7'; // live
+    clientSecret: string = 'NDfNvlpoeBcGXCSLzS4UJ7qFbFMlzFQrOqfIkfjl'; // live
     accessToken: string = '';
 
     constructor(private http: HttpClient, private router: Router) {}
@@ -28,7 +31,8 @@ export class VAService {
         accessTokenAppend.set('grant_type', 'authorization_code');
         accessTokenAppend.set('code', code);
         accessTokenAppend.set('state', state);
-        accessTokenAppend.set('redirect_uri', 'http://localhost:4200/app');
+        // accessTokenAppend.set('redirect_uri', 'http://localhost:4200/app'); // development
+        accessTokenAppend.set('redirect_uri', 'https://smart-covid-navigator.github.io/Covid-Application/app'); // live
 
         var queryInputs = accessTokenAppend.toString();
 
