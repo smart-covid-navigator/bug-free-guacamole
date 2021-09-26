@@ -488,6 +488,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
       var age = this.calculateAge(birthDate);
       // EOB info file reading
       this.cmsService.eobInfo(patientId).subscribe(eob => {
+        console.log(JSON.parse(eob))
         var entry = JSON.parse(eob).entry;
         var entryString = JSON.stringify(entry);
         var conditionsArray: PatientCondition[] = [];
@@ -496,7 +497,9 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
           var entryHere = JSON.stringify(JSON.parse(entryString)[i]);
           
           var resource = JSON.stringify(JSON.parse(entryHere).resource);
+          console.log(JSON.parse(resource))
           var allDiagnoses = JSON.parse(resource).diagnosis;
+          
 
           for (var j = 0; j < allDiagnoses.length; j++) {
             var diagnosisHere = allDiagnoses[j];

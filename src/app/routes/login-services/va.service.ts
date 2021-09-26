@@ -11,8 +11,11 @@ export class VAService {
 
     // clientId: string = '0oa7hyx727mtpNfKi2p7'; // development
     // clientSecret: string = 'VcN_x8AIuFEnZ8oTHUMd3UnzsTeYp3XWUKscToWy'; // development
-    clientId: string = '0oacwflnzuid0X5XX2p7'; // live
-    clientSecret: string = 'NDfNvlpoeBcGXCSLzS4UJ7qFbFMlzFQrOqfIkfjl'; // live
+    // clientId: string = '0oacwflnzuid0X5XX2p7'; // GITHUB PAGES
+    // clientSecret: string = 'NDfNvlpoeBcGXCSLzS4UJ7qFbFMlzFQrOqfIkfjl'; // GITHUB PAGES
+    clientId: string = '0oacwpgestIvUlDUD2p7' // FIREBASE
+    clientSecret: string = 'KM8Yo6qmOVlqiOtFJehq66L8LHn_iiJug_GOIdn1' // FIREBASE
+
     accessToken: string = '';
 
     constructor(private http: HttpClient, private router: Router) {}
@@ -32,7 +35,8 @@ export class VAService {
         accessTokenAppend.set('code', code);
         accessTokenAppend.set('state', state);
         // accessTokenAppend.set('redirect_uri', 'http://localhost:4200/app'); // development
-        accessTokenAppend.set('redirect_uri', 'https://smart-covid-navigator.github.io/Covid-Application/app'); // live
+        // accessTokenAppend.set('redirect_uri', 'https://smart-covid-navigator.github.io/Covid-Application/app'); // GITHUB PAGES
+        accessTokenAppend.set('redirect_uri', 'https://smart-covid-navigator-1.web.app/app'); // GITHUB PAGES
 
         var queryInputs = accessTokenAppend.toString();
 
