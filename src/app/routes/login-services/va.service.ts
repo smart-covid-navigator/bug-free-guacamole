@@ -4,8 +4,11 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 const options = {
-    headers: new HttpHeaders()
+    headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+    })
 };
+
 @Injectable({ providedIn: 'root' })
 export class VAService {
 
@@ -35,12 +38,11 @@ export class VAService {
         accessTokenAppend.set('code', code);
         accessTokenAppend.set('state', state);
         // accessTokenAppend.set('redirect_uri', 'http://localhost:4200/app'); // development
-        // accessTokenAppend.set('redirect_uri', 'https://smart-covid-navigator.github.io/Covid-Application/app'); // GITHUB PAGES
-        accessTokenAppend.set('redirect_uri', 'https://smart-covid-navigator-1.web.app/app'); // GITHUB PAGES
+        accessTokenAppend.set('redirect_uri', 'https://smart-covid-navigator-1.web.app/app'); // FIREBASE
 
         var queryInputs = accessTokenAppend.toString();
 
-        return this.http.post<any>('/oauth2/token', queryInputs, options).pipe(map(data => {
+        return this.http.post<any>('https://cors-anywhere.herokuapp.com/https://sandbox-api.va.gov/oauth2/token', queryInputs, options).pipe(map(data => {
             localStorage.setItem('vaData',  JSON.stringify(data));  
             options.headers = options.headers.set('Authorization', `Bearer ${data.access_token}`);
             

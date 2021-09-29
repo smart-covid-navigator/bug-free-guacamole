@@ -16,10 +16,12 @@ const options = {
 })
 export class CMSService {
 
-    clientId:string = 'QoJO4ZUb4uQKoA09mu65jScgDfMZlvgbTQHXsSRn';
-    client_secret:string = 'JF3JGS2DqxI5jHICvL3gEMgnPDSBdKBzTy71K0GnQYVq5WcD3rvqCC8gUg7PC0XqpvKHadgYJSJWpW254ZJHtuiXRWNjMLILm1wVO39tmn7uVHbDwIj866Tzd32J5mBp';
-    // clientId:string = 'db4oqcGIdwlHdFbLLALPw3U6XWn9aUWEfwkVpOvV'; // live 
-    // client_secret:string = 'QQOu71FZ4o1xjoyxdsieccsZvnnT9hcveRdQqyTwn6MVDZ9cNwS5gq61f1SpeyrVxKDL1ZSOj0McEUQPQIktMtLzxpN8Y7luXVQCxsNNS8AosXH0D2qV6BQx3IWoVPkj'; // live
+    // clientId:string = 'QoJO4ZUb4uQKoA09mu65jScgDfMZlvgbTQHXsSRn';
+    // client_secret:string = 'JF3JGS2DqxI5jHICvL3gEMgnPDSBdKBzTy71K0GnQYVq5WcD3rvqCC8gUg7PC0XqpvKHadgYJSJWpW254ZJHtuiXRWNjMLILm1wVO39tmn7uVHbDwIj866Tzd32J5mBp';
+    // clientId:string = 'db4oqcGIdwlHdFbLLALPw3U6XWn9aUWEfwkVpOvV'; // GITHUB PAGES 
+    // client_secret:string = 'QQOu71FZ4o1xjoyxdsieccsZvnnT9hcveRdQqyTwn6MVDZ9cNwS5gq61f1SpeyrVxKDL1ZSOj0McEUQPQIktMtLzxpN8Y7luXVQCxsNNS8AosXH0D2qV6BQx3IWoVPkj'; // GITHUB PAGES
+    clientId:string = '2xWic5pseJkn824Q9fQFt7dzqSxaL0ljvPdKCeKX'; // FIREBASE
+    client_secret:string = 't7vhE6Opif3Ngct6nTbdCxKhfe1I3FAdKFlEXckcFZNPaQKBuTDndeUmh8qY5UwaEqw9M62ekvEO5JOj1Wr9U7noEbpri9uXWXnNZ3tVqlKN2nFmPZ4Xnz99S10hZJ18'; // FIREBASE
     accessToken: string = '';
 
     constructor(private http: HttpClient,
@@ -38,7 +40,8 @@ export class CMSService {
  
         let accessTokenAppend = new URLSearchParams();
         accessTokenAppend.set('grant_type', 'authorization_code');
-        accessTokenAppend.set('redirect_uri', 'http://localhost:4200/app');
+        // accessTokenAppend.set('redirect_uri', 'http://localhost:4200/app');
+        accessTokenAppend.set('redirect_uri', 'https://smart-covid-navigator-1.web.app/app'); // FIREBASE
         accessTokenAppend.set('client_id', this.clientId);
         accessTokenAppend.set('client_secret', this.client_secret);
         accessTokenAppend.set('code', code);
@@ -75,6 +78,18 @@ export class CMSService {
             
             localStorage.setItem('patientData', JSON.stringify(patientReturnedData));                
             return JSON.stringify(patientReturnedData);
+        }));
+    }
+
+    coverageInfo(patientId: string) {
+        const patientParams = new HttpParams({fromString: `patient=${patientId}`});
+        options['params'] = patientParams;
+        options.headers = options.headers.set('Authorization', `Bearer ${this.accessToken}`);
+        return this.http.get<any>('https://sandbox.bluebutton.cms.gov/v1/fhir/Coverage/', options)
+            .pipe(map(coverageReturnedData => {
+            
+            localStorage.setItem('coverageData', JSON.stringify(coverageReturnedData));                
+            return JSON.stringify(coverageReturnedData);
         }));
     }
 

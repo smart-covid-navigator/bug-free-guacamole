@@ -470,6 +470,7 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
     // patient info file reading
     this.cmsService.patientInfo(patientId).subscribe(patient => {
       var parsing = JSON.parse(patient);
+      console.log(parsing)
       var justPatient = JSON.stringify(parsing.entry);
       var bigResource = JSON.stringify(JSON.parse(justPatient)[0]);
       var justResource = JSON.stringify(JSON.parse(bigResource).resource)
@@ -486,42 +487,50 @@ export class VariantEntryAndVisualizationComponent implements OnInit {
 
       var birthDate = JSON.parse(justResource).birthDate;
       var age = this.calculateAge(birthDate);
-      // EOB info file reading
-      this.cmsService.eobInfo(patientId).subscribe(eob => {
-        console.log(JSON.parse(eob))
-        var entry = JSON.parse(eob).entry;
-        var entryString = JSON.stringify(entry);
-        var conditionsArray: PatientCondition[] = [];
-        var codesInArray: string[] = [];
-        for (var i = 0; i < entry.length; i++) { // looping through all entries to find 
-          var entryHere = JSON.stringify(JSON.parse(entryString)[i]);
-          
-          var resource = JSON.stringify(JSON.parse(entryHere).resource);
-          console.log(JSON.parse(resource))
-          var allDiagnoses = JSON.parse(resource).diagnosis;
-          
+      
+      this.cmsService.coverageInfo(patientId).subscribe(coverage=> {
 
-          for (var j = 0; j < allDiagnoses.length; j++) {
-            var diagnosisHere = allDiagnoses[j];
-            var diagnosisHereString = JSON.stringify(diagnosisHere);
-            var diagnosisCodeableConcept = JSON.stringify(JSON.parse(diagnosisHereString).diagnosisCodeableConcept);
-            var coding = JSON.parse(diagnosisCodeableConcept).coding;
-            var indexHere = JSON.stringify(coding[0]);
-            var code = JSON.parse(indexHere).code;
-            var display = JSON.parse(indexHere).display;
-            if (code != "9999999") {
-              if (!codesInArray.includes(code)) {
-                var condition = new PatientCondition(code, display, "CMS");
-                conditionsArray.push(condition);
-                codesInArray.push(code);
+        console.log(JSON.parse(coverage))
+
+        this.cmsService.eobInfo(patientId).subscribe(eob => {
+          console.log(JSON.parse(eob))
+          var entry = JSON.parse(eob).entry;
+          var entryString = JSON.stringify(entry);
+          var conditionsArray: PatientCondition[] = [];
+          var codesInArray: string[] = [];
+          for (var i = 0; i < entry.length; i++) { // looping through all entries to find 
+            var entryHere = JSON.stringify(JSON.parse(entryString)[i]);
+            
+            var resource = JSON.stringify(JSON.parse(entryHere).resource);
+            console.log(JSON.parse(resource))
+            var allDiagnoses = JSON.parse(resource).diagnosis;
+            
+
+            for (var j = 0; j < allDiagnoses.length; j++) {
+              var diagnosisHere = allDiagnoses[j];
+              var diagnosisHereString = JSON.stringify(diagnosisHere);
+              var diagnosisCodeableConcept = JSON.stringify(JSON.parse(diagnosisHereString).diagnosisCodeableConcept);
+              var coding = JSON.parse(diagnosisCodeableConcept).coding;
+              var indexHere = JSON.stringify(coding[0]);
+              var code = JSON.parse(indexHere).code;
+              var display = JSON.parse(indexHere).display;
+              if (code != "9999999") {
+                if (!codesInArray.includes(code)) {
+                  var condition = new PatientCondition(code, display, "CMS");
+                  conditionsArray.push(condition);
+                  codesInArray.push(code);
+                }
+                
               }
-              
             }
           }
-        }
-        // create patient based on information collected in the files
-        this.createPatient(first, last, zipCode, gender, age, conditionsArray, codesInArray);
-      }); 
+          // create patient based on information collected in the files
+          this.createPatient(first, last, zipCode, gender, age, conditionsArray, codesInArray);
+        }); 
+      })
+      // EOB info file reading
+
+        
     });
   }
   

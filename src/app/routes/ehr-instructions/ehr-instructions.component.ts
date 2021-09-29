@@ -13,11 +13,13 @@ export class EHRLoginComponent {
     // called when the "Login to CMS" button is clicked.
     public cmsSignIn() {
         localStorage.setItem("cmsUser", "attempt");
-        let auth:string = 
-            `https://sandbox.bluebutton.cms.gov/v1/o/authorize/?client_id=${this.cmsService.clientId}&redirect_uri=http://localhost:4200/app&response_type=code&state=test1`;
+        // let auth:string = 
+        //     `https://sandbox.bluebutton.cms.gov/v1/o/authorize/?client_id=${this.cmsService.clientId}&redirect_uri=http://localhost:4200/app&response_type=code&state=test1`; // development
 
         // let auth:string = 
-        //     `https://sandbox.bluebutton.cms.gov/v1/o/authorize/?client_id=${this.cmsService.clientId}&redirect_uri=https://smart-covid-navigator.github.io/Covid-Application/app&response_type=code&state=test1`;
+        //     `https://sandbox.bluebutton.cms.gov/v1/o/authorize/?client_id=${this.cmsService.clientId}&redirect_uri=https://smart-covid-navigator.github.io/Covid-Application/app&response_type=code&state=test1`; // GITHUB PAGES
+        let auth:string = 
+            `https://sandbox.bluebutton.cms.gov/v1/o/authorize/?client_id=${this.cmsService.clientId}&redirect_uri=https://smart-covid-navigator-1.web.app/app&response_type=code&state=test1`; // GITHUB PAGES
         location.href = auth;
     }
 
