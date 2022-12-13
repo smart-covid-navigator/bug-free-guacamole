@@ -27,7 +27,7 @@
     "core-js": "^2.4.1",
     "csv-parser": "^2.3.3",
     "exceljs": "^4.1.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fhirclient": "^0.1.11",
     "ngx-csv-parser": "0.0.3",
     "ngx-papaparse": "^3.0.4",
